@@ -317,7 +317,7 @@ void check_game_over(void){ //게임오버인지 체크
     for(y=0;y<4;y++) for(x=0;x<4;x++) if(board[y][x]==2048) temp=2;
 	if(temp==1) return;
 	
-    game_over_on=1;    //게임오버 flag를 on. draw함수에서 애니메이션 효과를 주기 위함 
+    game_over_on=1;    //게임오버 신호를 줌 draw함수에서 애니메이션 효과를 주기 위해
     
     cursor_position(MAP_X+28,MAP_Y);
     if(temp==0) printf("Game Over..                             ");
