@@ -302,22 +302,6 @@ void new_num(){
     draw();
 }
 
-void new_record_message(int num, int color, char * msg) {
-	for(int k=0;k<3;k++){    
-		cursor_position(MAP_X+28,MAP_Y);
-		printf("                                        ");
-		Sleep(100);
-		SetConsoleTextAttribute( GetStdHandle( STD_OUTPUT_HANDLE ), color);
-		cursor_position(MAP_X+28,MAP_Y);
-		if(num < 2048) printf("You made %d : ",num);
-		SetConsoleTextAttribute( GetStdHandle( STD_OUTPUT_HANDLE ), ORIGINAL);
-		printf("%s", msg);
-		Sleep(100);
-	}
-}
-	
-	
-
  
 void check_game_over(void){ //게임오버인지 체크 
     int y,x;
