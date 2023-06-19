@@ -308,20 +308,19 @@ void check_game_over(void){ //게임오버인지 체크
 
 	int temp=0;
 	
-    for(y=0;y<4;y++) for(x=0;x<4;x++) if(board[y][x]==0) temp=1; //일단 빈칸이 있으면 게임오버가 아님 
-    for(y=0;y<3;y++) for(x=0;x<3;x++) if(board[y][x]==board[y+1][x]||board[y][x]==board[y][x+1]) temp=1; //return;
+    for(y=0;y<4;y++) for(x=0;x<4;x++) if(board[y][x]==0) return;; //일단 빈칸이 있으면 게임오버가 아님 
+    for(y=0;y<3;y++) for(x=0;x<3;x++) if(board[y][x]==board[y+1][x]||board[y][x]==board[y][x+1]) return;
 	//0,0부터 2,2까지 오른쪽과 아래를 검사 
-    for(y=0;y<3;y++) if(board[y][3]==board[y+1][3]) temp=1; //0~2번행은 아래만 검사(오른쪽값이 없으므로) 
-    for(x=0;x<3;x++) if(board[3][x]==board[3][x+1]) temp=1; //0~2번열은 오른쪽만 검사(아래쪽값이 없으므로) 
+    for(y=0;y<3;y++) if(board[y][3]==board[y+1][3]) return;; //0~2번행은 아래만 검사(오른쪽값이 없으므로) 
+    for(x=0;x<3;x++) if(board[3][x]==board[3][x+1]) return;; //0~2번열은 오른쪽만 검사(아래쪽값이 없으므로) 
     
-    for(y=0;y<4;y++) for(x=0;x<4;x++) if(board[y][x]==2048) temp=2;
-	if(temp==1) return;
+    for(y=0;y<4;y++) for(x=0;x<4;x++) if(board[y][x]==2048) temp=1;
 	
     game_over_on=1;    //게임오버 신호를 줌 draw함수에서 애니메이션 효과를 주기 위해
     
     cursor_position(MAP_X+28,MAP_Y);
     if(temp==0) printf("Game Over..                             ");
-    else if(temp==2) printf("\033[0;33m축하합니다 2048을 만드셨어요!! 나가주세요.                          ");
+    else if(temp==1) printf("\033[0;33m축하합니다 2048을 만드셨어요!! 나가주세요.                          ");
     cursor_position(MAP_X+28,MAP_Y+2);
     printf("                                        ");
     draw();
